@@ -1,0 +1,13 @@
+wedfest_api:
+  build: .
+  volumes:
+    - .:/wedfest_api
+  ports:
+    - "3000:3000"
+  links:
+    - postgres
+
+postgres:
+  image: postgres:latest
+  ports:
+    - "5432"
