@@ -6,3 +6,7 @@ gem 'rails-api'
 gem 'pg'
 
 gem 'rubocop', require: false
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.3'
+end
