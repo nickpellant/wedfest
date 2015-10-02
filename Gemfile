@@ -5,6 +5,7 @@ gem 'rails-api'
 
 gem 'pg'
 
+gem 'rack-cors', require: 'rack/cors'
 gem 'rubocop', require: false
 
 group :development, :test do
