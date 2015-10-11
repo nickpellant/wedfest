@@ -34,10 +34,12 @@ module WedfestApi
       g.controller_specs false
     end
 
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, 'Rack::Cors' do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: %i(get put post patch delete options)
+        resource(
+          '*', headers: :any, methods: %i(get put post patch delete options)
+        )
       end
     end
   end

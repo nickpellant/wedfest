@@ -1,6 +1,12 @@
 AllCops:
   RunRailsCops: true
+  Exclude:
+    - "db/schema.rb"
 
 Style/Documentation:
   Exclude:
     - "config/application.rb"
+    - "db/**/*"
+    - "app/models/**/*"
+    - "app/controllers/**/*"
+    - "app/serializers/**/*"
