@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/nickpellant/marmite.git
+  revision: a668493196b6bf8cc5b1fe96a6c7c317f2283c7e
+  specs:
+    marmite (0.1.0)
+      activesupport (~> 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -139,6 +146,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc3)
+  marmite!
   pg
   rack-cors
   rails (= 4.2.4)
