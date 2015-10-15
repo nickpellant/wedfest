@@ -29,5 +29,18 @@ module WedfestApi
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |g|
+      g.controller_specs false
+    end
+
+    config.middleware.insert_before 0, 'Rack::Cors' do
+      allow do
+        origins '*'
+        resource(
+          '*', headers: :any, methods: %i(get put post patch delete options)
+        )
+      end
+    end
   end
 end
