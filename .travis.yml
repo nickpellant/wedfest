@@ -1,7 +1,7 @@
 language: ruby
 
 env:
-  - SECRET_KEY_BASE="f7c075888c1149c371b12bc00e7a996f1226427540d50084844705f92f9e26b15f60d81c0de941fe60c3234ea921703f1bf5eaa0f8310a113a90007447d2b615"
+  - secret_key_base="f7c075888c1149c371b12bc00e7a996f1226427540d50084844705f92f9e26b15f60d81c0de941fe60c3234ea921703f1bf5eaa0f8310a113a90007447d2b615"
 before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:setup
