@@ -6,6 +6,7 @@ gem 'rails-api'
 gem 'pg'
 
 gem 'active_model_serializers', '~> 0.10.0.rc3'
+gem 'figaro'
 gem 'marmite', github: 'nickpellant/marmite'
 gem 'rack-cors', require: 'rack/cors'
 
