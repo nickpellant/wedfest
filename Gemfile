@@ -10,11 +10,14 @@ gem 'figaro'
 gem 'marmite', github: 'nickpellant/marmite'
 gem 'rack-cors', require: 'rack/cors'
 
-gem 'rubocop', require: false
-
 group :development, :test do
+  gem 'rubocop', require: false
+  gem 'rspec-rails', '~> 3.3'
+end
+
+group :test do
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'rspec-rails', '~> 3.3'
+  gem 'simplecov', require: false
   gem 'shoulda-matchers'
 end
