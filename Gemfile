@@ -6,13 +6,18 @@ gem 'rails-api'
 gem 'pg'
 
 gem 'active_model_serializers', '~> 0.10.0.rc3'
+gem 'figaro'
 gem 'marmite', github: 'nickpellant/marmite'
 gem 'rack-cors', require: 'rack/cors'
 
-gem 'rubocop', require: false
-
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'rubocop', require: false
   gem 'rspec-rails', '~> 3.3'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'simplecov', require: false
   gem 'shoulda-matchers'
 end
