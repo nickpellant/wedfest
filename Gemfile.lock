@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/nickpellant/marmite.git
-  revision: a668493196b6bf8cc5b1fe96a6c7c317f2283c7e
+  revision: 53f26877988f738068bb3aa7c44080f3ed08877a
   specs:
     marmite (0.1.0)
       activesupport (~> 4.2)
@@ -74,7 +74,7 @@ GEM
       mime-types (>= 1.16, < 3)
     mime-types (2.6.2)
     mini_portile (0.6.2)
-    minitest (5.8.1)
+    minitest (5.8.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     parser (2.2.2.6)
