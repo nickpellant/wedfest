@@ -9,11 +9,13 @@ RSpec.describe 'Index Invites', type: :request do
     let(:params) { { filter: { invite_code: invite_code } } }
 
     context 'when an Invite exists matching the invite_code' do
-      let(:invite) { FactoryGirl.create(:invite) }
+      let(:invite) { FactoryGirl.create(:invite, :with_guests) }
       let(:invite_code) { invite.invite_code }
 
       let(:invite_json) do
-        ActiveModel::SerializableResource.new([invite]).to_json
+        ActiveModel::SerializableResource.new(
+          [invite], include: 'guests'
+        ).to_json
       end
 
       it { expect(response.body).to eql(invite_json) }

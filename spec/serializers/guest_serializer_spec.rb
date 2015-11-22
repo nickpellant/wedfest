@@ -14,6 +14,7 @@ RSpec.describe GuestSerializer, type: :serializer do
         type: 'guests',
         attributes: {
           attendance: guest.attendance,
+          attendance_restriction: guest.attendance_restriction,
           diet: guest.diet,
           name: guest.name
         },
