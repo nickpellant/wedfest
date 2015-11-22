@@ -29,5 +29,8 @@ FactoryGirl.define do
     trait :evening_attendance do
       attendance 'evening'
     end
+    trait :not_attending do
+      attendance 'not_attending'
+    end
   end
 end

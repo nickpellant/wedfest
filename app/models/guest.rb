@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  ATTENDANCE_OPTIONS = %w(weekend wedding evening)
+  ATTENDANCE_OPTIONS = %w(not_attending weekend wedding evening)
   DIET_OPTIONS = %w(non-vegetarian vegetarian vegan nut_allergy gluten-free)
 
   validates :attendance,
