@@ -4,6 +4,7 @@ module Api
 
     index_endpoint
     show_endpoint
+    update_endpoint
 
     private
 
@@ -13,6 +14,10 @@ module Api
 
     def show_params
       params.permit(:id)
+    end
+
+    def update_params
+      params.require(:data).require(:attributes).permit(:attendance)
     end
   end
 end

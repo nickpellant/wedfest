@@ -20,7 +20,16 @@ RSpec.describe 'Show Guest', type: :request do
   context 'when Guest not found' do
     let(:guest_id) { 1 }
 
-    let(:guest_json) { {}.to_json }
+    let(:guest_json) do
+      {
+        errors: [
+          {
+            title: I18n.translate('error_codes.show_not_found.message'),
+            status: 'not_found'
+          }
+        ]
+      }.to_json
+    end
 
     before(:example) { show_guest }
 
