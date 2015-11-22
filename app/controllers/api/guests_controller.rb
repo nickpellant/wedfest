@@ -17,7 +17,10 @@ module Api
     end
 
     def update_params
-      params.require(:data).require(:attributes).permit(:attendance)
+      params
+        .require(:data)
+        .require(:attributes)
+        .permit(:attendance, :diet)
     end
   end
 end
