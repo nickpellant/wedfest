@@ -12,5 +12,9 @@ module Api
       params.require(:filter).require(:invite_code)
       params[:filter].permit(:invite_code)
     end
+
+    def index_includes
+      'guests'
+    end
   end
 end

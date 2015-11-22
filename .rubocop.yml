@@ -11,3 +11,4 @@ Style/Documentation:
     - "app/models/**/*"
     - "app/controllers/**/*"
     - "app/serializers/**/*"
+    - "app/validators/**/*"
