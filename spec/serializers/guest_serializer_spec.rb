@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe GuestSerializer, type: :serializer do
-  subject(:guest) { FactoryGirl.build_stubbed(:guest, :weekend_attendance) }
+  subject(:guest) do
+    FactoryGirl.build_stubbed(:guest, :weekend_attendance, :vegetarian)
+  end
   let(:invite) { guest.invite }
 
   let(:actual_json) { ActiveModel::SerializableResource.new(guest).to_json }
@@ -12,6 +14,7 @@ RSpec.describe GuestSerializer, type: :serializer do
         type: 'guests',
         attributes: {
           attendance: guest.attendance,
+          diet: guest.diet,
           name: guest.name
         },
         relationships: {

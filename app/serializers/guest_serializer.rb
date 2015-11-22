@@ -1,5 +1,5 @@
 class GuestSerializer < ActiveModel::Serializer
-  attributes :id, :attendance, :name
+  attributes :id, :attendance, :diet, :name
 
   belongs_to :invite
 end

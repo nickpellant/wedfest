@@ -4,8 +4,8 @@ RSpec.describe 'Update Guest', type: :request do
   subject(:update_guest) { patch api_guest_url(id: guest_id), params }
 
   let(:update_attributes) do
-    FactoryGirl.attributes_for(:guest, :weekend_attendance)
-      .slice(*%i(attendance))
+    FactoryGirl.attributes_for(:guest, :weekend_attendance, :vegetarian)
+      .slice(*%i(attendance diet))
   end
 
   let(:params) do
@@ -44,7 +44,8 @@ RSpec.describe 'Update Guest', type: :request do
               title: I18n.translate('error_codes.validation_failed.message'),
               status: 'conflict',
               details: {
-                attendance: ['is not included in the list']
+                attendance: ['is not included in the list'],
+                diet: ['is not included in the list']
               }
             }
           ]
@@ -52,7 +53,7 @@ RSpec.describe 'Update Guest', type: :request do
       end
 
       let(:update_attributes) do
-        { attendance: 'invalid' }
+        { attendance: 'invalid', diet: 'invalid' }
       end
 
       it { expect(response.body).to eql(guest_json) }
