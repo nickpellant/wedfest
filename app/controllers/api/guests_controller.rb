@@ -9,7 +9,7 @@ module Api
     private
 
     def index_params
-      []
+      {}
     end
 
     def show_params
