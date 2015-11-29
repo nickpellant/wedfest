@@ -12,6 +12,7 @@ RSpec.describe AccommodationSerializer, type: :serializer do
         id: accommodation.id.to_s,
         type: 'accommodations',
         attributes: {
+          initial_availability: accommodation.initial_availability,
           name: accommodation.name,
           price_pence: accommodation.price_pence,
           sleeps: accommodation.sleeps

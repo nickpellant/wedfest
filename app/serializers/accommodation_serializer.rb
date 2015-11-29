@@ -1,3 +1,3 @@
 class AccommodationSerializer < ActiveModel::Serializer
-  attributes :id, :name, :price_pence, :sleeps
+  attributes :id, :initial_availability, :name, :price_pence, :sleeps
 end
