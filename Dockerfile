@@ -1,4 +1,4 @@
-FROM ruby:2.2.3
+FROM ruby:2.3.0
 MAINTAINER nick@nickpellant.com
 
 RUN apt-get update -qq && apt-get install -y \
