@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Accommodation, type: :model do
+  it { is_expected.to have_many(:basket_items) }
+
   it do
     is_expected.to(
       validate_numericality_of(:initial_availability)

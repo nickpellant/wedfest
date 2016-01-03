@@ -1,4 +1,6 @@
 class Accommodation < ActiveRecord::Base
+  has_many :basket_items, as: :product
+
   validates :initial_availability, numericality: {
     greater_than_or_equal_to: 0,
     allow_nil: true
