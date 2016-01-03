@@ -5,7 +5,7 @@ RSpec.describe 'Update Guest', type: :request do
 
   let(:update_attributes) do
     FactoryGirl.attributes_for(:guest, :weekend_attendance, :vegetarian)
-      .slice(*%i(attendance diet))
+               .slice(*%i(attendance diet))
   end
 
   let(:params) do
