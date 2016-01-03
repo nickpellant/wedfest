@@ -2,8 +2,9 @@ module Api
   class BasketItemsController < ApplicationController
     include Marmite::Controller
 
-    show_endpoint
     create_endpoint
+    show_endpoint
+    update_endpoint
 
     private
 
@@ -20,6 +21,13 @@ module Api
         &.titlecase
 
       create_params
+    end
+
+    def update_params
+      params
+        .require(:data)
+        .require(:attributes)
+        .permit(:quantity)
     end
 
     def show_params
