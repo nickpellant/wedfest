@@ -41,7 +41,9 @@ RSpec.describe 'Update Guest', type: :request do
         {
           errors: [
             {
-              title: I18n.translate('error_codes.validation_failed.message'),
+              title: I18n.translate(
+                'error_codes.update_validation_failed.message'
+              ),
               status: 'conflict',
               details: {
                 attendance: ['is not included in the list'],

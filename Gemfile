@@ -8,7 +8,9 @@ gem 'pg'
 gem 'active_model_serializers', '~> 0.10.0.rc3'
 gem 'figaro'
 gem 'marmite', github: 'nickpellant/marmite'
+gem 'money-rails', '1.2'
 gem 'rack-cors', require: 'rack/cors'
+gem 'statesman', '~> 1.3', '>= 1.3.1'
 
 group :development, :test do
   gem 'rubocop', require: false

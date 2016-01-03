@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/nickpellant/marmite.git
-  revision: dd731cb9e41732a057d2137aee5139a387954f79
+  revision: bdeb0edb858aeca09cdc3908ef1c6753333c75ca
   specs:
     marmite (0.1.0)
       activesupport (~> 4.2)
@@ -76,6 +76,15 @@ GEM
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.3)
+    monetize (1.1.0)
+      money (~> 6.5.0)
+    money (6.5.1)
+      i18n (>= 0.6.4, <= 0.7.0)
+    money-rails (1.2.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.1.0)
+      money (~> 6.5.0)
+      railties (>= 3.0)
     nokogiri (1.6.6.4)
       mini_portile (~> 0.6.0)
     parser (2.2.2.6)
@@ -139,7 +148,7 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
-    shoulda-matchers (3.0.0)
+    shoulda-matchers (3.0.1)
       activesupport (>= 4.0.0)
     simplecov (0.10.0)
       docile (~> 1.1.0)
@@ -152,6 +161,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    statesman (1.3.1)
     thor (0.19.1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
@@ -166,6 +176,7 @@ DEPENDENCIES
   faker
   figaro
   marmite!
+  money-rails (= 1.2)
   pg
   rack-cors
   rails (= 4.2.4)
@@ -174,6 +185,7 @@ DEPENDENCIES
   rubocop
   shoulda-matchers
   simplecov
+  statesman (~> 1.3, >= 1.3.1)
 
 BUNDLED WITH
    1.10.6
