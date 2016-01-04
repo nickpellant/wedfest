@@ -20,7 +20,7 @@ module Api
       params
         .require(:data)
         .require(:attributes)
-        .permit(:attendance, :diet)
+        .permit(:attendance, :diet, :email_address)
     end
   end
 end

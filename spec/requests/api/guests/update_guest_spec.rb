@@ -5,7 +5,7 @@ RSpec.describe 'Update Guest', type: :request do
 
   let(:update_attributes) do
     FactoryGirl.attributes_for(:guest, :weekend_attendance, :vegetarian)
-               .slice(*%i(attendance diet))
+               .slice(*%i(attendance diet email_address))
   end
 
   let(:params) do
@@ -47,7 +47,8 @@ RSpec.describe 'Update Guest', type: :request do
               status: 'conflict',
               details: {
                 attendance: ['is not included in the list'],
-                diet: ['is not included in the list']
+                diet: ['is not included in the list'],
+                email_address: ['is invalid']
               }
             }
           ]
@@ -55,7 +56,7 @@ RSpec.describe 'Update Guest', type: :request do
       end
 
       let(:update_attributes) do
-        { attendance: 'invalid', diet: 'invalid' }
+        { attendance: 'invalid', diet: 'invalid', email_address: 'invalid' }
       end
 
       it { expect(response.body).to eql(guest_json) }
