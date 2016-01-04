@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  use_doorkeeper do
+    skip_controllers :applications, :authorized_applications
+  end
+
   namespace :api do
     resources :accommodations, only: %i(index)
     resources :basket_items, only: %i(create show update)

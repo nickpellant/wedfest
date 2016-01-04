@@ -2,7 +2,7 @@ AllCops:
   Rails:
     Enabled: true
   Exclude:
-    - "db/schema.rb"
+    - "db/**/*"
     - "vendor/**/*"
 
 Style/Documentation:
