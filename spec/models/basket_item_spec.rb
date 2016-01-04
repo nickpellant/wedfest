@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe BasketItem, type: :model do
+  it { is_expected.to belong_to(:basket) }
   it { is_expected.to belong_to(:product) }
 
+  it { is_expected.to validate_presence_of(:basket) }
   it { is_expected.to validate_presence_of(:product) }
   it do
     is_expected.to(

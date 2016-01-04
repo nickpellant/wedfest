@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :invite do
-    invite_code 'ABCDE'
+    sequence(:invite_code) { |n| n }
 
     transient do
       guest_count 1

@@ -18,6 +18,12 @@ RSpec.describe BasketItemSerializer, type: :serializer do
           quantity: basket_item.quantity
         },
         relationships: {
+          basket: {
+            data: {
+              id: basket_item.basket.id.to_s,
+              type: 'baskets'
+            }
+          },
           product: {
             data: {
               id: accommodation_product.id.to_s,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104144338) do
+ActiveRecord::Schema.define(version: 20160107122326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20160104144338) do
     t.integer  "quantity",     null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "basket_id",    null: false
   end
 
+  add_index "basket_items", ["basket_id"], name: "index_basket_items_on_basket_id", using: :btree
   add_index "basket_items", ["product_type", "product_id"], name: "index_basket_items_on_product_type_and_product_id", using: :btree
 
   create_table "baskets", force: :cascade do |t|
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 20160104144338) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
+  add_foreign_key "basket_items", "baskets"
   add_foreign_key "baskets", "invites"
   add_foreign_key "guests", "invites"
 end
