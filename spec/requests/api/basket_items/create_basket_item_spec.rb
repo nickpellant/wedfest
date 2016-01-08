@@ -18,8 +18,10 @@ RSpec.describe 'Update BasketItem', type: :request do
       },
       relationships: {
         product: {
-          id: product.id,
-          type: 'accommodations'
+          data: {
+            id: product.id,
+            type: 'accommodations'
+          }
         }
       }
     }

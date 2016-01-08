@@ -2,6 +2,7 @@ module Api
   class BasketItemsController < ApplicationController
     include Marmite::Controller
     include Concerns::AuthorizeGuest
+    include Concerns::JsonApiParams
 
     create_endpoint(service: CreateBasketItem)
     show_endpoint
@@ -9,26 +10,13 @@ module Api
 
     private
 
-    # @TODO Implement JSON API params parser inside marmite
     def create_params
-      create_params = params
-                      .require(:data)
-                      .require(:attributes)
-                      .permit(:quantity)
-
-      create_params[:product_id] = params.dig(:relationships, :product, :id)
-      create_params[:product_type] = params.dig(:relationships, :product, :type)
-        &.singularize
-        &.titlecase
-
-      create_params
+      attribute_params(:quantity)
+        .merge(relationship_params(product: { data: [:id, :type] }))
     end
 
     def update_params
-      params
-        .require(:data)
-        .require(:attributes)
-        .permit(:quantity)
+      attribute_params(:quantity)
     end
 
     def show_params
