@@ -1,6 +1,7 @@
 module Api
   class GuestsController < ApplicationController
     include Marmite::Controller
+    include Concerns::JsonApiParams
 
     index_endpoint
     show_endpoint
@@ -17,10 +18,7 @@ module Api
     end
 
     def update_params
-      params
-        .require(:data)
-        .require(:attributes)
-        .permit(:attendance, :diet)
+      attribute_params([:attendance, :diet, :email_address])
     end
   end
 end

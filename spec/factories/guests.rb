@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :guest do
     invite
 
+    email_address { Faker::Internet.safe_email }
     name { Faker::Name.name }
 
     trait :non_vegetarian do
