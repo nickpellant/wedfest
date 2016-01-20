@@ -7,7 +7,7 @@ class Guest < ActiveRecord::Base
   validates :attendance_restriction,
             inclusion: { in: ATTENDANCE_OPTIONS, allow_blank: true }
   validates :diet, inclusion: { in: DIET_OPTIONS, allow_blank: true }
-  validates :email_address, format: /@/
+  validates :email_address, format: { with: /@/, allow_nil: true }
   validates :invite, :name, presence: true
   validates_with MatchesAttendanceRestrictionValidator
 
