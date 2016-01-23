@@ -4,12 +4,6 @@ require 'support/shoulda_matchers'
 RSpec.describe Guest, type: :model do
   it { is_expected.to belong_to(:invite) }
 
-  it { is_expected.to allow_value(nil).for(:email_address) }
-  it { is_expected.to allow_value('john@example.com').for(:email_address) }
-  it do
-    is_expected.to_not allow_value('invalidexample.com').for(:email_address)
-  end
-
   it { is_expected.to validate_presence_of(:invite) }
   it { is_expected.to validate_presence_of(:name) }
   it do
