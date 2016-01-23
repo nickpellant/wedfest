@@ -47,8 +47,7 @@ RSpec.describe 'Update Guest', type: :request do
               status: 'conflict',
               details: {
                 attendance: ['is not included in the list'],
-                diet: ['is not included in the list'],
-                email_address: ['is invalid']
+                diet: ['is not included in the list']
               }
             }
           ]
@@ -56,7 +55,7 @@ RSpec.describe 'Update Guest', type: :request do
       end
 
       let(:update_attributes) do
-        { attendance: 'invalid', diet: 'invalid', email_address: 'invalid' }
+        { attendance: 'invalid', diet: 'invalid' }
       end
 
       it { expect(response.body).to eql(guest_json) }

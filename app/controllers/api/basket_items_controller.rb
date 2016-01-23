@@ -1,7 +1,7 @@
 module Api
   class BasketItemsController < ApplicationController
     include Marmite::Controller
-    include Concerns::AuthorizeGuest
+    include Concerns::AuthorizeInvite
     include Concerns::JsonApiParams
 
     create_endpoint(service: CreateBasketItem)

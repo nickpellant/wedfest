@@ -5,7 +5,7 @@ module Concerns
     included do
       def current_basket
         @current_basket ||= begin
-          return unless current_guest && current_invite
+          return unless current_invite
           current_invite.baskets.first || Basket.create(invite: current_invite)
         end
       end
