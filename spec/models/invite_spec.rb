@@ -7,7 +7,7 @@ RSpec.describe Invite, type: :model do
   it do
     is_expected.to_not allow_value('invalidexample.com').for(:email_address)
   end
-  
+
   it { is_expected.to validate_presence_of(:invite_code) }
   it { is_expected.to validate_uniqueness_of(:invite_code).case_insensitive }
 

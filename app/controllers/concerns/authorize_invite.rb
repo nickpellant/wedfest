@@ -1,5 +1,5 @@
 module Concerns
-  module AuthorizeGuest
+  module AuthorizeInvite
     extend ActiveSupport::Concern
 
     included do
