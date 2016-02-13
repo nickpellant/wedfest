@@ -6,6 +6,14 @@ FactoryGirl.define do
 
     transient do
       guest_count 1
+      basket_count 1
+    end
+
+    trait(:with_baskets) do
+      after(:create) do |invite, evaluator|
+        baskets = create_list(:basket, evaluator.basket_count, invite: invite)
+        invite.baskets << baskets
+      end
     end
 
     trait(:with_guests) do

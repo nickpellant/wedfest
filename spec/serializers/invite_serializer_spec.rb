@@ -1,9 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe InviteSerializer, type: :serializer do
-  subject(:invite) { FactoryGirl.create(:invite, :with_guests) }
+  subject(:invite) { FactoryGirl.create(:invite, :with_baskets, :with_guests) }
+
+  let(:baskets) { invite.baskets }
+  let(:current_basket) { baskets.first }
   let(:guests) { invite.guests }
 
+  let(:current_basket_relationship_data) do
+    { id: current_basket.id.to_s, type: 'baskets' }
+  end
   let(:guests_relationship_data) do
     guests.map { |guest| { id: guest.id.to_s, type: 'guests' } }
   end
@@ -18,6 +24,9 @@ RSpec.describe InviteSerializer, type: :serializer do
           invite_code: invite.invite_code
         },
         relationships: {
+          current_basket: {
+            data: current_basket_relationship_data
+          },
           guests: {
             data: guests_relationship_data
           }
