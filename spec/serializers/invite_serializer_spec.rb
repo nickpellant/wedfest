@@ -21,6 +21,7 @@ RSpec.describe InviteSerializer, type: :serializer do
         id: invite.id.to_s,
         type: 'invites',
         attributes: {
+          email_address: invite.email_address,
           invite_code: invite.invite_code
         },
         relationships: {
