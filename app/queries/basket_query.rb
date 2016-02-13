@@ -1,5 +1,6 @@
 class BasketQuery < Marmite::Queries::ResourceQuery
   def initialize(relation: Basket.all)
+    super
   end
 
   def current_basket(invite:)
