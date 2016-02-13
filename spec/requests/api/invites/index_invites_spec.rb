@@ -14,7 +14,7 @@ RSpec.describe 'Index Invites', type: :request do
 
       let(:invite_json) do
         ActiveModel::SerializableResource.new(
-          [invite], include: 'guests'
+          [invite], include: [:guests, { current_basket: :basket_items }]
         ).to_json
       end
 
