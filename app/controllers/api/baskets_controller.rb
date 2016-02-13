@@ -8,6 +8,10 @@ module Api
 
     private
 
+    def show_includes
+      :basket_items
+    end
+
     def show_params
       params.permit(:id)
     end

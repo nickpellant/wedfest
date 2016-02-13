@@ -13,11 +13,13 @@ RSpec.describe 'Show Basket', type: :request do
     include_context 'setup_doorkeeper_access_token'
 
     context 'when Basket exists' do
-      let!(:basket) { FactoryGirl.create(:basket) }
+      let!(:basket) { FactoryGirl.create(:basket, :with_basket_items) }
       let(:basket_id) { basket.id }
 
       let(:basket_json) do
-        ActiveModel::SerializableResource.new(basket).to_json
+        ActiveModel::SerializableResource.new(
+          basket, include: :basket_items
+        ).to_json
       end
 
       before(:example) { show_basket }
