@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123125910) do
+ActiveRecord::Schema.define(version: 20160213225152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(version: 20160123125910) do
 
   add_index "basket_items", ["basket_id"], name: "index_basket_items_on_basket_id", using: :btree
   add_index "basket_items", ["product_type", "product_id"], name: "index_basket_items_on_product_type_and_product_id", using: :btree
+
+  create_table "basket_transitions", force: :cascade do |t|
+    t.string   "to_state",                   null: false
+    t.text     "metadata",    default: "{}"
+    t.integer  "sort_key",                   null: false
+    t.integer  "basket_id",                  null: false
+    t.boolean  "most_recent",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "basket_transitions", ["basket_id", "most_recent"], name: "index_basket_transitions_parent_most_recent", unique: true, where: "most_recent", using: :btree
+  add_index "basket_transitions", ["basket_id", "sort_key"], name: "index_basket_transitions_parent_sort", unique: true, using: :btree
 
   create_table "baskets", force: :cascade do |t|
     t.integer  "invite_id",  null: false
