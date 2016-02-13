@@ -9,8 +9,9 @@ Style/Documentation:
   Exclude:
     - "config/application.rb"
     - "db/**/*"
-    - "app/models/**/*"
     - "app/controllers/**/*"
+    - "app/queries/**/*"
+    - "app/models/**/*"
     - "app/serializers/**/*"
     - "app/services/**/*"
     - "app/validators/**/*"
