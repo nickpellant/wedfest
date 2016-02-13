@@ -14,7 +14,7 @@ module Api
     end
 
     def index_includes
-      'guests'
+      [:guests, { current_basket: :basket_items }]
     end
   end
 end
