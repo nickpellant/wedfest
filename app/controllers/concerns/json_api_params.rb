@@ -10,7 +10,7 @@ module Concerns
       end
 
       def relationship_params(filters)
-        permitted_params = params.dig(:relationships)&.permit(filters)
+        permitted_params = params.dig(:data, :relationships)&.permit(filters)
         return {} unless permitted_params
 
         relationship_params = permitted_params.map do |name, relationship|

@@ -14,13 +14,13 @@ RSpec.describe 'Update BasketItem', type: :request do
     {
       data: {
         type: 'basket_items',
-        attributes: create_attributes
-      },
-      relationships: {
-        product: {
-          data: {
-            id: product.id,
-            type: 'accommodations'
+        attributes: create_attributes,
+        relationships: {
+          product: {
+            data: {
+              id: product.id,
+              type: 'accommodations'
+            }
           }
         }
       }
