@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213231258) do
+ActiveRecord::Schema.define(version: 20160214114526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,19 @@ ActiveRecord::Schema.define(version: 20160213231258) do
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "order_id",               null: false
+    t.integer  "product_id",             null: false
+    t.string   "product_type",           null: false
+    t.money    "sale_price",   scale: 2, null: false
+    t.integer  "quantity",               null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_type", "product_id"], name: "index_order_items_on_product_type_and_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.money    "total",        scale: 2
