@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :accommodation do
     name { Faker::Commerce.product_name }
+    description { Faker::Lorem.sentence }
 
     trait :budget_bell_tent do
       initial_availability 10
