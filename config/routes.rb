@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :baskets, only: %i(show)
     resources :guests, only: %i(index show update)
     resources :invites, only: %i(index)
-    resources :orders, only: %i(create)
+    resources :orders, only: %i(create show)
   end
 end
