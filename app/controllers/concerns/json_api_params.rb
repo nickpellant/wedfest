@@ -6,7 +6,9 @@ module Concerns
       private
 
       def attribute_params(filters)
-        params.require(:data).require(:attributes).permit(filters)
+        permitted_params = params.dig(:data, :attributes)&.permit(filters)
+        return {} unless permitted_params
+        permitted_params
       end
 
       def relationship_params(filters)
@@ -14,10 +16,11 @@ module Concerns
         return {} unless permitted_params
 
         relationship_params = permitted_params.map do |name, relationship|
-          {
-            "#{name}_id": relationship[:data][:id],
+          params = { "#{name}_id": relationship[:data][:id] }
+          params.merge!(
             "#{name}_type": relationship[:data][:type]&.singularize&.titlecase
-          }
+          ) if relationship[:data][:type]
+          params
         end
 
         relationship_params.reduce(&:merge)
