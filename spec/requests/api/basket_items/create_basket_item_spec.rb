@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/shared_contexts/setup_doorkeeper_access_token'
 require 'support/shared_examples/it_is_secured_by_doorkeeper'
 
-RSpec.describe 'Update BasketItem', type: :request do
+RSpec.describe 'Create BasketItem', type: :request do
   subject(:create_basket_item) { post api_basket_items_url, params }
 
   let(:create_attributes) do
