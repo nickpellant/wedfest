@@ -42,5 +42,15 @@ RSpec.describe CreateOrder, type: :service do
     it 'transitions the Basket to purchased' do
       expect(basket.state_machine.current_state).to eql('purchased')
     end
+
+    context 'when the attributes include a stripe_token' do
+      let(:attributes) { { basket_id: basket.id, stripe_token: 'token' } }
+
+      it 'transitions the Order to payment_received' do
+        expect(created_order.state_machine.current_state).to(
+          eql('payment_received')
+        )
+      end
+    end
   end
 end
