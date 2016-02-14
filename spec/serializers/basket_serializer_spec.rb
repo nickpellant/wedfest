@@ -16,6 +16,12 @@ RSpec.describe BasketSerializer, type: :serializer do
         id: basket.id.to_s,
         type: 'baskets',
         relationships: {
+          invite: {
+            data: {
+              id: basket.invite.id.to_s,
+              type: 'invites'
+            }
+          },
           basket_items: {
             data: basket_items_relationship_data
           }
