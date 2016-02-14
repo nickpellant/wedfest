@@ -23,6 +23,10 @@ RSpec.describe CreateOrder, type: :service do
 
     before(:example) { call }
 
+    it 'sets the Invite on the Order to that of the Basket' do
+      expect(created_order.invite).to eql(basket.invite)
+    end
+
     it 'creates OrderItems for each BasketItem' do
       basket.basket_items.each do |basket_item|
         product = basket_item.product

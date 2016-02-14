@@ -55,7 +55,8 @@ RSpec.describe 'Create Order', type: :request do
               ),
               status: 'conflict',
               details: {
-                basket: ['can\'t be blank']
+                basket: ['can\'t be blank'],
+                invite: ['can\'t be blank']
               }
             }
           ]

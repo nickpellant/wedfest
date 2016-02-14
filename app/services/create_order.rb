@@ -1,4 +1,6 @@
 class CreateOrder < Marmite::Services::CreateEndpoint
+  before_validation :set_invite
+
   after_create :create_order_items
   after_create :transition_basket
   after_create :transition_order
@@ -17,6 +19,11 @@ class CreateOrder < Marmite::Services::CreateEndpoint
         quantity: basket_item.quantity
       )
     end
+  end
+
+  def set_invite
+    return unless order.basket.present?
+    order.invite = order.basket.invite
   end
 
   def transition_basket
