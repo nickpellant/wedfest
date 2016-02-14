@@ -4,16 +4,13 @@ module Api
     include Concerns::AuthorizeInvite
     include Concerns::JsonApiParams
 
-    show_endpoint
+    create_endpoint(service: CreateOrder)
 
     private
 
-    def show_includes
-      :basket_items
-    end
-
-    def show_params
-      params.permit(:id)
+    def create_params
+      attribute_params(:stripe_token)
+        .merge(relationship_params(basket: { data: :id }))
     end
   end
 end

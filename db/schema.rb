@@ -120,13 +120,13 @@ ActiveRecord::Schema.define(version: 20160214114526) do
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "order_id",               null: false
-    t.integer  "product_id",             null: false
-    t.string   "product_type",           null: false
-    t.money    "sale_price",   scale: 2, null: false
-    t.integer  "quantity",               null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "order_id",                     null: false
+    t.integer  "product_id",                   null: false
+    t.string   "product_type",                 null: false
+    t.integer  "sale_price_pence", default: 0, null: false
+    t.integer  "quantity",                     null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
