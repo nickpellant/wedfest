@@ -15,7 +15,8 @@ RSpec.describe AccommodationSerializer, type: :serializer do
           initial_availability: accommodation.initial_availability,
           name: accommodation.name,
           price_pence: accommodation.price_pence,
-          sleeps: accommodation.sleeps
+          sleeps: accommodation.sleeps,
+          description: accommodation.description
         }
       }
     }.to_json

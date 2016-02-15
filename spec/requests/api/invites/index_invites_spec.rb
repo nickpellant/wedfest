@@ -33,10 +33,4 @@ RSpec.describe 'Index Invites', type: :request do
       it { expect(response).to have_http_status(:ok) }
     end
   end
-
-  context 'when params do not include an invite_code filter' do
-    let(:params) { {} }
-
-    it { expect(response).to have_http_status(:bad_request) }
-  end
 end

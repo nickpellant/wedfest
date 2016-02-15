@@ -5,6 +5,7 @@ module Api
     include Concerns::JsonApiParams
 
     create_endpoint(service: CreateOrder)
+    show_endpoint
 
     private
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214133909) do
+ActiveRecord::Schema.define(version: 20160214180322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160214133909) do
     t.datetime "updated_at",                       null: false
     t.integer  "price_pence",          default: 0, null: false
     t.integer  "initial_availability"
+    t.text     "description"
   end
 
   create_table "basket_items", force: :cascade do |t|
@@ -151,12 +152,15 @@ ActiveRecord::Schema.define(version: 20160214133909) do
     t.string   "stripe_token"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "invite_id"
   end
 
   add_index "orders", ["basket_id"], name: "index_orders_on_basket_id", using: :btree
+  add_index "orders", ["invite_id"], name: "index_orders_on_invite_id", using: :btree
 
   add_foreign_key "basket_items", "baskets"
   add_foreign_key "baskets", "invites"
   add_foreign_key "guests", "invites"
   add_foreign_key "orders", "baskets"
+  add_foreign_key "orders", "invites"
 end

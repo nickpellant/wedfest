@@ -10,6 +10,7 @@ module Concerns
         end
       end
       helper_method :current_invite
+      alias_method :pundit_user, :current_invite
     end
   end
 end

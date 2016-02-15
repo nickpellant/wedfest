@@ -12,6 +12,7 @@ Style/Documentation:
     - "app/controllers/**/*"
     - "app/queries/**/*"
     - "app/models/**/*"
+    - "app/policies/**/*"
     - "app/serializers/**/*"
     - "app/services/**/*"
     - "app/state_machines/**/*"

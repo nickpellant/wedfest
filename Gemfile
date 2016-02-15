@@ -6,11 +6,12 @@ gem 'rails-api'
 
 gem 'pg'
 
-gem 'active_model_serializers', '~> 0.10.0.rc3'
+gem 'active_model_serializers', '~> 0.10.0.rc4'
 gem 'doorkeeper', '~> 3.1'
 gem 'figaro'
 gem 'marmite', github: 'nickpellant/marmite'
 gem 'money-rails', '1.6'
+gem 'pundit', '~> 1.1'
 gem 'rack-cors', require: 'rack/cors'
 gem 'statesman', '~> 2.0'
 
