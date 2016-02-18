@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: git://github.com/nickpellant/marmite.git
-  revision: eb2805aabb8bc8d55e2f115f7255227b6666f31f
+  revision: b21b3d3a7459a11bc2d28a99a61e98dbcd7e80f2
   specs:
     marmite (0.1.0)
       activesupport (~> 4.2)

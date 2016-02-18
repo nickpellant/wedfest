@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :invite do
+    name { "#{Faker::Name.first_name} & #{Faker::Name.first_name}" }
     sequence(:invite_code) { |n| n }
 
     email_address { Faker::Internet.safe_email }
