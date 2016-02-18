@@ -1,14 +1,11 @@
 module Api
   class InvitesController < ApplicationController
     include Marmite::Controller
+    include Concerns::AuthorizeInvite
 
-    index_endpoint
+    index_endpoint(service: IndexInvites)
 
     private
-
-    def index_params
-      params.dig(:filter)&.permit(:invite_code)
-    end
 
     def index_includes
       [:guests, { current_basket: :basket_items }]
