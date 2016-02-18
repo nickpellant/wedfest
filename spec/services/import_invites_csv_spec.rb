@@ -22,8 +22,15 @@ RSpec.describe ImportInvitesCsv, type: :service do
       expect { call }.to change { Invite.count }.from(0).to(3)
 
       expect(first_created_invite.invite_code).to_not be_empty
+      expect(first_created_invite.guests.pluck(:name)).to eql(['Joe'])
+
       expect(second_created_invite.invite_code).to_not be_empty
+      expect(second_created_invite.guests.pluck(:name)).to eql(%w(Sam Sarah))
+
       expect(third_created_invite.invite_code).to_not be_empty
+      expect(third_created_invite.guests.pluck(:name)).to(
+        eql(%w(Ben Hermione Jack))
+      )
     end
   end
 end

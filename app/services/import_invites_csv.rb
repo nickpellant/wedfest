@@ -8,8 +8,13 @@ class ImportInvitesCsv
   def call
     Invite.transaction do
       csv_hash.each do |row|
-        row.merge!(invite_code: SecureRandom.hex(2).upcase)
-        Invite.create!(row)
+        invite_params = {
+          name: row[:invite_name],
+          invite_code: SecureRandom.hex(2).upcase
+        }
+
+        invite = Invite.create!(invite_params)
+        guest_names(row: row).each { |name| invite.guests.create(name: name) }
       end
     end
   end
@@ -24,11 +29,15 @@ class ImportInvitesCsv
     end
     CSV.new(
       csv_content, headers: true, header_converters: :symbol,
-                converters: [:all, :blank_to_nil]
+                   converters: [:all, :blank_to_nil]
     )
   end
 
   def csv_hash
     csv.to_a.map(&:to_hash)
+  end
+
+  def guest_names(row:)
+    row[:guest_names].split(',').map(&:strip)
   end
 end
