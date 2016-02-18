@@ -1,4 +1,4 @@
-Invite Name,Guest Names
+Invite Name,Guest Names,Attendance Restriction
 Jones Family,Joe
-Sam & Sarah,"Sam, Sarah"
-"Ben, Hermione & Jack","Ben, Hermione, Jack"
+Sam & Sarah,"Sam, Sarah",evening
+"Ben, Hermione & Jack","Ben, Hermione, Jack",

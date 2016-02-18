@@ -23,13 +23,22 @@ RSpec.describe ImportInvitesCsv, type: :service do
 
       expect(first_created_invite.invite_code).to_not be_empty
       expect(first_created_invite.guests.pluck(:name)).to eql(['Joe'])
+      expect(first_created_invite.guests.pluck(:attendance_restriction)).to(
+        eql([nil])
+      )
 
       expect(second_created_invite.invite_code).to_not be_empty
       expect(second_created_invite.guests.pluck(:name)).to eql(%w(Sam Sarah))
+      expect(second_created_invite.guests.pluck(:attendance_restriction)).to(
+        eql(%w(evening evening))
+      )
 
       expect(third_created_invite.invite_code).to_not be_empty
       expect(third_created_invite.guests.pluck(:name)).to(
         eql(%w(Ben Hermione Jack))
+      )
+      expect(third_created_invite.guests.pluck(:attendance_restriction)).to(
+        eql([nil, nil, nil])
       )
     end
   end

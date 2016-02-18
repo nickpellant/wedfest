@@ -14,7 +14,7 @@ class ImportInvitesCsv
         }
 
         invite = Invite.create!(invite_params)
-        guest_names(row: row).each { |name| invite.guests.create(name: name) }
+        create_guests!(invite: invite, row: row)
       end
     end
   end
@@ -22,6 +22,14 @@ class ImportInvitesCsv
   private
 
   attr_reader :csv_content
+
+  def create_guests!(invite:, row:)
+    guest_names(row: row).each do |name|
+      invite.guests.create!(
+        name: name, attendance_restriction: row[:attendance_restriction]
+      )
+    end
+  end
 
   def csv
     CSV::Converters[:blank_to_nil] = lambda do |field|
