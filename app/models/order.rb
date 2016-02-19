@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   belongs_to :basket
   belongs_to :invite
 
+  has_many :order_charges
   has_many :order_items
   has_many :order_transitions, autosave: false
 

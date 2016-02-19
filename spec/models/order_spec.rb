@@ -5,6 +5,7 @@ RSpec.describe Order, type: :model do
   it { is_expected.to belong_to(:invite) }
 
   it { is_expected.to have_many(:order_items) }
+  it { is_expected.to have_many(:order_charges) }
 
   it { is_expected.to validate_presence_of(:basket) }
   it { is_expected.to validate_presence_of(:invite) }
