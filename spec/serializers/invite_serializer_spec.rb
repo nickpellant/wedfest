@@ -42,14 +42,6 @@ RSpec.describe InviteSerializer, type: :serializer do
     }.to_json
   end
 
-  context 'when no current_invite is provided' do
-    let(:expected_attributes) do
-      { invite_code: invite.invite_code }
-    end
-
-    it { expect(actual_json).to eql(expected_json) }
-  end
-
   context 'when Invite to serialize is the current_invite' do
     let(:actual_json) do
       ActiveModel::SerializableResource.new(invite, scope: invite).to_json
@@ -58,7 +50,8 @@ RSpec.describe InviteSerializer, type: :serializer do
     let(:expected_attributes) do
       {
         email_address: invite.email_address,
-        invite_code: invite.invite_code
+        invite_code: invite.invite_code,
+        name: invite.name
       }
     end
 

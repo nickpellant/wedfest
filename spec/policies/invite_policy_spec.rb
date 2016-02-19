@@ -12,7 +12,9 @@ RSpec.describe InvitePolicy, type: :policy do
       let(:current_invite) { invite }
 
       it do
-        expect(serialized_attributes).to eql([:email_address, :invite_code])
+        expect(serialized_attributes).to(
+          eql([:email_address, :invite_code, :name])
+        )
       end
     end
 
@@ -20,7 +22,7 @@ RSpec.describe InvitePolicy, type: :policy do
       let(:current_invite) { FactoryGirl.build_stubbed(:invite) }
 
       it do
-        expect(serialized_attributes).to eql([:invite_code])
+        expect(serialized_attributes).to eql([])
       end
     end
   end
