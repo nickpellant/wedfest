@@ -13,7 +13,7 @@ RSpec.describe InvitePolicy, type: :policy do
 
       it do
         expect(serialized_attributes).to(
-          eql([:email_address, :invite_code, :name])
+          eql([:cabaret_info, :email_address, :invite_code, :name])
         )
       end
     end

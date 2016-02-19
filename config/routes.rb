@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :basket_items, only: %i(create show update)
     resources :baskets, only: %i(show)
     resources :guests, only: %i(index show update)
-    resources :invites, only: %i(index)
+    resources :invites, only: %i(index update)
     resources :orders, only: %i(create show)
   end
 end

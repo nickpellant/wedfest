@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe InviteSerializer, type: :serializer do
   subject(:invite) do
-    FactoryGirl.create(:invite, :with_baskets, :with_guests, :with_orders)
+    FactoryGirl.create(
+      :invite, :with_baskets, :with_cabaret_info, :with_guests, :with_orders
+    )
   end
 
   let(:baskets) { invite.baskets }
@@ -49,6 +51,7 @@ RSpec.describe InviteSerializer, type: :serializer do
 
     let(:expected_attributes) do
       {
+        cabaret_info: invite.cabaret_info,
         email_address: invite.email_address,
         invite_code: invite.invite_code,
         name: invite.name
