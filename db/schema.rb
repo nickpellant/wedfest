@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219234934) do
+ActiveRecord::Schema.define(version: 20160219235446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,12 +158,12 @@ ActiveRecord::Schema.define(version: 20160219234934) do
   add_index "order_transitions", ["order_id", "sort_key"], name: "index_order_transitions_parent_sort", unique: true, using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.money    "total",        scale: 2
     t.integer  "basket_id"
     t.string   "stripe_token"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "invite_id"
+    t.integer  "total_price_pence", default: 0, null: false
   end
 
   add_index "orders", ["basket_id"], name: "index_orders_on_basket_id", using: :btree
