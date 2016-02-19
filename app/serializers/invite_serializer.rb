@@ -1,5 +1,5 @@
 class InviteSerializer < ActiveModel::Serializer
-  attributes :id, :invite_code, :email_address, :name
+  attributes :id, :invite_code, :email_address, :name, :cabaret_info
 
   belongs_to :current_basket
 

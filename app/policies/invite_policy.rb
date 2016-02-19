@@ -1,7 +1,10 @@
 class InvitePolicy < ApplicationPolicy
   def serialized_attributes
     keys = []
-    keys += [:email_address, :invite_code, :name] if current_invite?
+
+    if current_invite?
+      keys += [:cabaret_info, :email_address, :invite_code, :name]
+    end
 
     keys.sort_by(&:downcase)
   end

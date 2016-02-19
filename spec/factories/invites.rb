@@ -18,6 +18,10 @@ FactoryGirl.define do
       end
     end
 
+    trait(:with_cabaret_info) do
+      cabaret_info { Faker::Lorem.sentence }
+    end
+
     trait(:with_guests) do
       after(:create) do |invite, evaluator|
         guests = create_list(:guest, evaluator.guest_count, invite: invite)
