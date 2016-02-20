@@ -10,6 +10,8 @@ RSpec.describe Order, type: :model do
   it { is_expected.to validate_presence_of(:basket) }
   it { is_expected.to validate_presence_of(:invite) }
 
+  it { is_expected.to monetize(:total_price) }
+
   describe 'guards' do
     subject(:order) { FactoryGirl.create(:order, :with_stripe_token) }
 

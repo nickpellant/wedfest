@@ -8,6 +8,8 @@ class Order < ActiveRecord::Base
 
   validates :basket, :invite, presence: true
 
+  monetize :total_price_pence, numericality: { greater_than_or_equal_to: 0 }
+
   def state_machine
     @state_machine ||= OrderStateMachine.new(
       self, transition_class: OrderTransition
