@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219221607) do
+ActiveRecord::Schema.define(version: 20160219235751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,14 +122,24 @@ ActiveRecord::Schema.define(version: 20160219221607) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
+  create_table "order_charges", force: :cascade do |t|
+    t.string   "stripe_charge_id"
+    t.integer  "order_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "order_charges", ["order_id"], name: "index_order_charges_on_order_id", using: :btree
+
   create_table "order_items", force: :cascade do |t|
-    t.integer  "order_id",                     null: false
-    t.integer  "product_id",                   null: false
-    t.string   "product_type",                 null: false
-    t.integer  "sale_price_pence", default: 0, null: false
-    t.integer  "quantity",                     null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "order_id",                      null: false
+    t.integer  "product_id",                    null: false
+    t.string   "product_type",                  null: false
+    t.integer  "sale_price_pence",  default: 0, null: false
+    t.integer  "quantity",                      null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "total_price_pence", default: 0, null: false
   end
 
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
@@ -149,12 +159,12 @@ ActiveRecord::Schema.define(version: 20160219221607) do
   add_index "order_transitions", ["order_id", "sort_key"], name: "index_order_transitions_parent_sort", unique: true, using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.money    "total",        scale: 2
     t.integer  "basket_id"
     t.string   "stripe_token"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "invite_id"
+    t.integer  "total_price_pence", default: 0, null: false
   end
 
   add_index "orders", ["basket_id"], name: "index_orders_on_basket_id", using: :btree
@@ -163,6 +173,7 @@ ActiveRecord::Schema.define(version: 20160219221607) do
   add_foreign_key "basket_items", "baskets"
   add_foreign_key "baskets", "invites"
   add_foreign_key "guests", "invites"
+  add_foreign_key "order_charges", "orders"
   add_foreign_key "orders", "baskets"
   add_foreign_key "orders", "invites"
 end

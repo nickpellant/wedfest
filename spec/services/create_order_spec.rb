@@ -1,6 +1,9 @@
 require 'rails_helper'
+require 'support/shared_contexts/setup_stripe_mock'
 
 RSpec.describe CreateOrder, type: :service do
+  include_context 'setup_stripe_mock'
+
   subject(:create_order) do
     described_class.new(attributes: attributes, controller: controller)
   end
@@ -27,16 +30,22 @@ RSpec.describe CreateOrder, type: :service do
       expect(created_order.invite).to eql(basket.invite)
     end
 
+    it 'sets the total_price for the Order' do
+      expect(created_order.total_price_pence).to eql(0)
+    end
+
     it 'creates OrderItems for each BasketItem' do
       basket.basket_items.each do |basket_item|
         product = basket_item.product
+        total_price_pence = basket_item.quantity * product.price * 100
 
         order_item = created_order
                      .order_items
                      .find_by(
                        product: product,
                        sale_price_pence: product.price_pence,
-                       quantity: basket_item.quantity
+                       quantity: basket_item.quantity,
+                       total_price_pence: total_price_pence
                      )
 
         expect(order_item).to be_present

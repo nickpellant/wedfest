@@ -10,4 +10,5 @@ class OrderItem < ActiveRecord::Base
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }
 
   monetize :sale_price_pence, numericality: { greater_than_or_equal_to: 0 }
+  monetize :total_price_pence, numericality: { greater_than_or_equal_to: 0 }
 end
