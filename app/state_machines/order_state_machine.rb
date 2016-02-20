@@ -9,4 +9,8 @@ class OrderStateMachine
   guard_transition(to: :payment_received) do |order|
     order.stripe_token.present?
   end
+
+  before_transition(to: :payment_received) do |order, _transition|
+    ChargeOrder.new(order: order).call
+  end
 end

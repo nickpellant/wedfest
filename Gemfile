@@ -14,7 +14,7 @@ gem 'money-rails', '1.6'
 gem 'pundit', '~> 1.1'
 gem 'rack-cors', require: 'rack/cors'
 gem 'statesman', '~> 2.0'
-gem 'stripe', '~> 1.36'
+gem 'stripe', '~> 1.31'
 
 group :development, :test do
   gem 'rubocop', require: false, github: 'bbatsov/rubocop'

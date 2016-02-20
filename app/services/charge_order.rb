@@ -4,15 +4,13 @@ class ChargeOrder
   end
 
   def call
-    order.transaction do
-      charge = Stripe::Charge.create(
-        amount: order.total_price_pence,
-        source: order.stripe_token,
-        currency: 'gbp'
-      )
+    charge = Stripe::Charge.create(
+      amount: order.total_price_pence,
+      source: order.stripe_token,
+      currency: 'gbp'
+    )
 
-      order.order_charges.create!(stripe_charge_id: charge.id)
-    end
+    order.order_charges.create!(stripe_charge_id: charge.id)
   end
 
   private

@@ -8,7 +8,7 @@ FactoryGirl.define do
     end
 
     trait(:with_stripe_token) do
-      stripe_token 'tok_17drHk2eZvKYlo2CEEHm8kkG'
+      stripe_token 'tok_default'
     end
 
     trait(:with_order_items) do

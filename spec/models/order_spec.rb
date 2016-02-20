@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/shared_contexts/setup_stripe_mock'
 
 RSpec.describe Order, type: :model do
   it { is_expected.to belong_to(:basket) }
@@ -13,6 +14,8 @@ RSpec.describe Order, type: :model do
   it { is_expected.to monetize(:total_price) }
 
   describe 'guards' do
+    include_context 'setup_stripe_mock'
+
     subject(:order) { FactoryGirl.create(:order, :with_stripe_token) }
 
     context 'when stripe_token is set' do
